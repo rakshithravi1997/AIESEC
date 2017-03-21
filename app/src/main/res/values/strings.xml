@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AIESEC</string>
+    <string name="fragment1text">Hello, this is AISEC VIt chapter. We do a lot of work related to a lot of people and we go to places and hangout all over the world</string>
+    <string name="about_aiesec_content">AIESEC is the world’s largest youth run organization which has been activating potential for 69 years  and has approximately 70,000 members in 126 countries and territories and has delivered over  480,000 experiences to date. \n\n We are a non-governmental not-for- profit organization that has been endorsed by the United  Nations, multiple presidents world-wide, CEOs of multinational corporations and recognised by  UNESCO.</string>
+    <string name="about_aiesec">About AIESEC</string>
+    <string name="about_vision">OUR VISION</string>
+    <string name="aiesec_vision_content">Our vision and motto is “We strive to achieve peace and fulfilment of humankind’s potential.” by  providing the youth a platform to develop their leadership skills and promoting cross-cultural global  exchanges with a focus of creating a positive impact on society. \n\n We believe that it is every young person’s responsibility to take a positive role shaping the future of  our planet and everyone deserves the chance, and tools, to fulfil their potential. We provide young  people with self-driven, practical, global experiences. We empower them to see the world, have a  genuine effect and find what really matters to them.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

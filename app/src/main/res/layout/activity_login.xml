@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="2">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        >
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewPager"
+        >
+    </android.support.v4.view.ViewPager>
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:orientation="vertical"
+
+         >
+         <ImageView
+             android:layout_width="100dp"
+             android:layout_height="100dp"
+             android:layout_gravity="center"
+             android:src="@drawable/ic_account_circle_black_24dp"
+             />
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:orientation="horizontal"
+             >
+
+             <ImageButton
+                 android:layout_width="48dp"
+                 android:layout_height="48dp"
+                 android:layout_marginRight="10dp"
+                 android:id="@+id/previousImageButton"
+                 android:background="@drawable/ic_chevron_left_black_24dp"
+                 />
+
+             <TextSwitcher
+                 android:layout_width="100dp"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 android:id="@+id/textSwitcher">
+             </TextSwitcher>
+
+             <ImageButton
+                 android:layout_width="48dp"
+                 android:layout_height="48dp"
+                 android:layout_marginLeft="10dp"
+                 android:id="@+id/nextImageButton"
+                 android:background="@drawable/ic_chevron_right_black_24dp"
+                 />
+         </LinearLayout>
+     </LinearLayout>
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp"
+       android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        >
+
+       <android.support.design.widget.TextInputLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="8dp"
+           android:textColorHint="@color/colorPrimary"
+
+           >
+
+           <EditText
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="Email Address"
+               android:textSize="16sp"
+               android:textColorHint="@color/colorPrimary"
+               android:backgroundTint="@color/colorPrimary"
+               />
+
+
+       </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorPrimary"
+            app:passwordToggleEnabled="false"
+
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:textSize="16sp"
+                android:inputType="textPassword"
+                android:textColorHint="@color/colorPrimary"
+                android:backgroundTint="@color/colorPrimary"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+<Button
+    android:layout_marginTop="32dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Sign In"
+    android:textSize="14sp"
+    android:id="@+id/btnSignIn"
+    android:textAllCaps="false"
+    android:padding="8dp"
+    android:textColor="@color/white"
+    android:background="@drawable/button_backie"
+    />
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:text="Don't have an account. Create one"
+            />
+
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+
