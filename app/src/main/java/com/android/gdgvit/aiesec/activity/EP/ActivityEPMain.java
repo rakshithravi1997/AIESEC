@@ -23,7 +23,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.gdgvit.aiesec.R;
-import com.android.gdgvit.aiesec.activity.Main.StartActivity;
 
 /**
  * Created by Shuvam Ghosh on 3/11/2017.
@@ -37,7 +36,6 @@ public class ActivityEPMain extends AppCompatActivity
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
-    private Bundle mSavedInstanceState;
 
     /**
      * The {@link ViewPager} that will host the section contents.
