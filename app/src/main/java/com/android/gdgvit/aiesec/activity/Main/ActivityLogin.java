@@ -4,18 +4,31 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.android.gdgvit.aiesec.R;
 import com.android.gdgvit.aiesec.activity.EP.ActivityEPMain;
+import com.android.gdgvit.aiesec.model.LoginResponse;
+import com.android.gdgvit.aiesec.model.User;
+import com.android.gdgvit.aiesec.rest.ApiClient;
+import com.android.gdgvit.aiesec.rest.ApiInterface;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Shuvam Ghosh on 1/25/2017.
@@ -29,6 +42,12 @@ public class ActivityLogin extends AppCompatActivity{
     private String textNonAisec = "NON-AIESECER";
     private String textAisec = "AIESECER";
     private Button btnSignIn;
+    private EditText etUserEmail;
+    private EditText etUserPassword;
+    private TextView tvCreateAccount;
+    private String emailEntered;
+    private String passwordEntered;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +59,10 @@ public class ActivityLogin extends AppCompatActivity{
         previousImageButton = (ImageButton)findViewById(R.id.previousImageButton);
         nextImageButton = (ImageButton)findViewById(R.id.nextImageButton);
         textSwitcher.setText(textAisec);
+        etUserEmail = (EditText)findViewById(R.id.etUserEmail);
+        etUserPassword = (EditText)findViewById(R.id.etUserPassword);
+        tvCreateAccount = (TextView)findViewById(R.id.tvCreateAccount);
+
         Animation in = AnimationUtils.loadAnimation(this,
                 android.R.anim.fade_in);
         Animation out = AnimationUtils.loadAnimation(this,
@@ -47,16 +70,76 @@ public class ActivityLogin extends AppCompatActivity{
         textSwitcher.setInAnimation(in);
         textSwitcher.setOutAnimation(out);
 
-
+        btnSignIn.setText("Sign In");
         previousImageButton.setBackground(getDrawable(R.drawable.ic_chevron_left_blackdark_24dp));
         nextImageButton.setBackground(getDrawable(R.drawable.ic_chevron_right_black_24dp));
+
+
+        tvCreateAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ActivityLogin.this,SignUpActivity.class);
+                startActivity(i);
+            }
+        });
+
 
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ActivityLogin.this, ActivityEPMain.class);
-                startActivity(i);
+                emailEntered = etUserEmail.getText().toString();
+                passwordEntered = etUserPassword.getText().toString();
+
+                if (validate() == true) {
+
+
+
+                btnSignIn.setText("Logging in ...");
+                ApiInterface apiService = ApiClient.getClient(ActivityLogin.this).create(ApiInterface.class);
+                Call<LoginResponse> login = apiService.updateUser(emailEntered, passwordEntered);
+
+                login.enqueue(new Callback<LoginResponse>() {
+                    @Override
+                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+
+                        if (response.body().getStatus().toString().equals("invalid_password")) {
+                            Toast.makeText(ActivityLogin.this, "Invalid Password", Toast.LENGTH_SHORT).show();
+                            btnSignIn.setText("Sign In");
+                        }
+                        else if(response.body().getStatus().toString().equals("invalid_email")){
+                            Toast.makeText(ActivityLogin.this, "Invalid Email", Toast.LENGTH_SHORT).show();
+                            btnSignIn.setText("Sign In");
+                        }
+
+                        else if (response.body().getStatus().toString().equals("successfull")) {
+
+                            Toast.makeText(ActivityLogin.this, "Welcome:" + response.body().getUser().getName(), Toast.LENGTH_SHORT).show();
+
+                            // Log.d("User_name:",""+response.body().getUser().getName());
+                            Intent i = new Intent(ActivityLogin.this, ActivityEPMain.class);
+                            startActivity(i);
+                        }
+                        else
+                        {
+                            Toast.makeText(ActivityLogin.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                        }
+
+                        // Log.d("Response status",""+response.body().getStatus());
+                    }
+
+                    @Override
+                    public void onFailure(Call<LoginResponse> call, Throwable t) {
+
+                    }
+                });
+            }
+
+                else
+                {
+                    Toast.makeText(ActivityLogin.this, "Enter the fields", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -96,6 +179,16 @@ public class ActivityLogin extends AppCompatActivity{
 
     }
 
+    private boolean validate() {
+
+        if(!emailEntered.isEmpty()&&!passwordEntered.isEmpty())
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+
 
     private ViewSwitcher.ViewFactory mFactory = new ViewSwitcher.ViewFactory() {
 
@@ -111,4 +204,10 @@ public class ActivityLogin extends AppCompatActivity{
             return t;
         }
     };
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        btnSignIn.setText("Sign In");
+    }
 }

@@ -13,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -112,7 +113,8 @@ public class StartActivity extends AppCompatActivity{
                 if (menuItem.getItemId() == R.id.nav_my_club) {
 
                 } if (menuItem.getItemId() == R.id._nav_feedback) {
-                    Intent i = new Intent(StartActivity.this,ActivityEPMain.class);
+
+                    Intent i = new Intent(StartActivity.this,ActivityLogin.class);
                     startActivity(i);
 
                 }
@@ -128,25 +130,21 @@ public class StartActivity extends AppCompatActivity{
          * Setup Drawer Toggle of the Toolbar
          */
 
-
-
-
-
-
-
-
-
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout, mToolbar,R.string.app_name,
-                R.string.app_name);
+        mToolbar.setVisibility(View.GONE);
+
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout, mToolbar,R.string.app_name,R.string.app_name);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         mDrawerToggle.syncState();
 
-
-
-
+        ivHamburger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    mDrawerLayout.openDrawer(Gravity.LEFT);
+            }
+        });
 
         vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
