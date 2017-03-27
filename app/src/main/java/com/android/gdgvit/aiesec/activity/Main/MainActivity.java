@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
-    private Bundle mSavedInstanceState;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,14 +90,6 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Setup Drawer Toggle of the Toolbar
          */
-
-
-
-
-
-
-
-
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);

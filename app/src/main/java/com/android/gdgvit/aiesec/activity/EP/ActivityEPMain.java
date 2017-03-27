@@ -37,6 +37,7 @@ public class ActivityEPMain extends AppCompatActivity
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
 
+
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -70,6 +71,9 @@ public class ActivityEPMain extends AppCompatActivity
         tabLayout.getTabAt(0).setIcon(ICONS[0]);
         tabLayout.getTabAt(1).setIcon(ICONS[1]);
         tabLayout.getTabAt(2).setIcon(ICONS[2]);
+
+       // tabLayout.getTabAt(0).setText("First");
+
 
 
         /**
@@ -225,6 +229,7 @@ public class ActivityEPMain extends AppCompatActivity
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
+
             super(fm);
         }
 
