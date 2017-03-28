@@ -93,8 +93,6 @@ public class ActivityLogin extends AppCompatActivity{
 
                 if (validate() == true) {
 
-
-
                 btnSignIn.setText("Logging in ...");
                 ApiInterface apiService = ApiClient.getClient(ActivityLogin.this).create(ApiInterface.class);
                 Call<LoginResponse> login = apiService.updateUser(emailEntered, passwordEntered);
@@ -115,8 +113,6 @@ public class ActivityLogin extends AppCompatActivity{
                         else if (response.body().getStatus().toString().equals("successfull")) {
 
                             Toast.makeText(ActivityLogin.this, "Welcome:" + response.body().getUser().getName(), Toast.LENGTH_SHORT).show();
-
-                            // Log.d("User_name:",""+response.body().getUser().getName());
                             Intent i = new Intent(ActivityLogin.this, ActivityEPMain.class);
                             startActivity(i);
                         }
