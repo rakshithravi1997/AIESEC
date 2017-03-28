@@ -2,6 +2,7 @@ package com.android.gdgvit.aiesec.rest;
 
 
 import com.android.gdgvit.aiesec.model.LoginResponse;
+import com.android.gdgvit.aiesec.model.SignupResponse;
 
 import java.util.Map;
 
@@ -24,4 +25,10 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("login")
     Call<LoginResponse> updateUser(@Field("email") String email, @Field("pswd") String password);
+
+    @FormUrlEncoded
+    @POST("signup")
+    Call<SignupResponse> signupUser(@Field("name") String name, @Field("pswd") String password, @Field("email") String email,@Field("raisedby") String raisedby, @Field("cpf1") String countrypref1 ,  @Field("cpf2") String countrypref2, @Field("cpf3") String countrypref3, @Field("ctNo") String contactnp );
+
+
 }
