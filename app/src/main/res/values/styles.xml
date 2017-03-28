@@ -28,5 +28,9 @@
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:fontFamily">sans-serif-thin</item>
     </style>
+    <style name="MdToolbar" parent="Widget.AppCompat.Toolbar"/>
+
+    <style name="AppStyle.MdToolbar" parent="MdToolbar">
+    </style>
 
 </resources>

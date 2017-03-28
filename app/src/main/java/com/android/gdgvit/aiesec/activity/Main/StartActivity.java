@@ -21,6 +21,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import com.android.gdgvit.aiesec.R;
 import com.android.gdgvit.aiesec.activity.EP.ActivityEPMain;
+import com.android.gdgvit.aiesec.activity.Main.oGet.OGetFragment;
 import com.android.gdgvit.aiesec.fragment.StartScreenFragments.StartActivityFragment1;
 import com.android.gdgvit.aiesec.fragment.StartScreenFragments.StartActivityFragment2;
 
@@ -100,19 +101,22 @@ public class StartActivity extends AppCompatActivity{
                 if (menuItem.getItemId() == R.id.start_screen_menu_home) {
 
                 }
-                if (menuItem.getItemId() == R.id.nav_today_event) {
+                if (menuItem.getItemId() == R.id.start_screen_menu_icx) {
 
                 }
 
-                if (menuItem.getItemId() == R.id.nav_live_stats) {
+                if (menuItem.getItemId() == R.id.start_screen_menu_oget) {
+
+                    OGetFragment clubsAndChaptersFragment = new OGetFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.start_screen_content_main,clubsAndChaptersFragment).addToBackStack("Add").commit();
 
                 }
-                if (menuItem.getItemId() == R.id.nav_registration) {
+                if (menuItem.getItemId() == R.id.start_screen_menu_expansions) {
 
                 }
-                if (menuItem.getItemId() == R.id.nav_my_club) {
+                if (menuItem.getItemId() == R.id.start_screen_menu_about_us) {
 
-                } if (menuItem.getItemId() == R.id._nav_feedback) {
+                } if (menuItem.getItemId() == R.id.start_screen_menu_login) {
 
                     Intent i = new Intent(StartActivity.this,ActivityLogin.class);
                     startActivity(i);
