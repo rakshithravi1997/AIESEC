@@ -8,7 +8,11 @@ import android.util.Log;
 import java.io.File;
 import java.io.IOException;
 
-private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
+public class UploadFileToServer extends AsyncTask<Void, Integer, String> {
+    @Override
+    protected String doInBackground(Void... voids) {
+        return null;
+    }
         /*@Override
         protected void onPreExecute() {
             super.onPreExecute();

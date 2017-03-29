@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
@@ -19,12 +18,10 @@ import android.widget.ViewSwitcher;
 
 import com.android.gdgvit.aiesec.R;
 import com.android.gdgvit.aiesec.activity.EP.ActivityEPMain;
+import com.android.gdgvit.aiesec.activity.EP.ActivityEpMain;
 import com.android.gdgvit.aiesec.model.LoginResponse;
-import com.android.gdgvit.aiesec.model.User;
 import com.android.gdgvit.aiesec.rest.ApiClient;
 import com.android.gdgvit.aiesec.rest.ApiInterface;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -113,7 +110,7 @@ public class ActivityLogin extends AppCompatActivity{
                         else if (response.body().getStatus().toString().equals("successfull")) {
 
                             Toast.makeText(ActivityLogin.this, "Welcome:" + response.body().getUser().getName(), Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(ActivityLogin.this, ActivityEPMain.class);
+                            Intent i = new Intent(ActivityLogin.this, ActivityEpMain.class);
                             startActivity(i);
                         }
                         else
