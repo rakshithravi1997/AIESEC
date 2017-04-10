@@ -17,7 +17,7 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.android.gdgvit.aiesec.R;
-import com.android.gdgvit.aiesec.activity.EP.ActivityEPMain;
+import com.android.gdgvit.aiesec.activity.EP.ActivityEpMain;
 import com.android.gdgvit.aiesec.activity.EP.ActivityEpMain;
 import com.android.gdgvit.aiesec.model.LoginResponse;
 import com.android.gdgvit.aiesec.rest.ApiClient;
