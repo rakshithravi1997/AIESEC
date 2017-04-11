@@ -6,7 +6,22 @@
     <string name="about_vision">OUR VISION</string>
     <string name="aiesec_vision_content">Our vision and motto is “We strive to achieve peace and fulfilment of humankind’s potential.” by  providing the youth a platform to develop their leadership skills and promoting cross-cultural global  exchanges with a focus of creating a positive impact on society. \n\n We believe that it is every young person’s responsibility to take a positive role shaping the future of  our planet and everyone deserves the chance, and tools, to fulfil their potential. We provide young  people with self-driven, practical, global experiences. We empower them to see the world, have a  genuine effect and find what really matters to them.</string>
 
+    <string name="ok">OK</string>
+    <string name="files">Files</string>
+    <string name="directories">Folders</string>
+    <string name="goUp">Go Up</string>
+    <string name="all">Check All</string>
+    <string name="cancel">Cancel</string>
+    <string name="none">Uncheck All</string>
+    <string name="ext">External</string>
+    <string name="Int">Internal</string>
+    <string name="New">New Folder</string>
+    <string name="CNew">Enter New Folder Name</string>
+    <string name="create">Create</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ogetText"><![CDATA[Outgoing Global Entrepreneur provides a platform for enabling transformation  through an entrepreneurial experience in start up environments abroad. The  duration of the experience ranges from 6 weeks until 12 weeks. Depending on  the project accepted for, a stipend may or may not be provided. Are you ready  to venture into the world full of opportunities unexplored ?  In the race to be better than the best, we need to do things even best can&#39;t  imagine. Taking the road less travelled is not just a myth anymore. Technical  internships abroad is the way forward to stand out.  Outgoing Global Talent allows you to work for 3 to 18 months in a corporate  environment with regards to various fields of interests with a regulated stipend  depending on the project accepted for.  With flexible timelines and a world full of possibilities what are you waiting for?]]></string>
+    <string name="tab_1">Profile</string>
+    <string name="tab_2">Documents</string>
+    <string name="tab_3">Resources</string>
 </resources>

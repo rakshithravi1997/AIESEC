@@ -20,7 +20,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import com.android.gdgvit.aiesec.R;
-import com.android.gdgvit.aiesec.activity.EP.ActivityEPMain;
+import com.android.gdgvit.aiesec.activity.EP.ActivityEpMain;
 import com.android.gdgvit.aiesec.activity.Main.oGet.OGetFragment;
 import com.android.gdgvit.aiesec.fragment.StartScreenFragments.StartActivityFragment1;
 import com.android.gdgvit.aiesec.fragment.StartScreenFragments.StartActivityFragment2;
