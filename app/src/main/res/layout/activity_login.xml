@@ -98,6 +98,7 @@
                android:id="@+id/etUserEmail"
                android:hint="Email Address"
                android:textSize="16sp"
+               android:text="apple"
                android:textColorHint="@color/colorPrimary"
                android:backgroundTint="@color/colorPrimary"
                />
@@ -122,6 +123,7 @@
                 android:inputType="textPassword"
                 android:textColorHint="@color/colorPrimary"
                 android:backgroundTint="@color/colorPrimary"
+                android:text="sample"
                 />
 
         </android.support.design.widget.TextInputLayout>

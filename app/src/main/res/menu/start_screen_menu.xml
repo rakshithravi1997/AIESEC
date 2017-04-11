@@ -7,29 +7,29 @@
             android:icon="@drawable/ic_account_circle_black_24dp"
             android:title="Home" />
         <item
-            android:id="@+id/nav_today_event"
+            android:id="@+id/start_screen_menu_icx"
             android:icon="@drawable/ic_menu_event"
             android:title="iCX"
             />
         <item
-            android:id="@+id/nav_live_stats"
+            android:id="@+id/start_screen_menu_oget"
             android:icon="@drawable/ic_menu_live_stats"
             android:title="oGET" />
         <item
-            android:id="@+id/nav_registration"
+            android:id="@+id/start_screen_menu_ogv"
             android:icon="@drawable/ic_menu_registration"
             android:title="oGV" />
 
         <item
-            android:id="@+id/nav_my_club"
+            android:id="@+id/start_screen_menu_expansions"
             android:icon="@drawable/ic_menu_my_club"
             android:title="Expansions" />
         <item
-            android:id="@+id/nav_clubs_chapters"
+            android:id="@+id/start_screen_menu_about_us"
             android:icon="@drawable/ic_menu_live_stats"
             android:title="About Us" />
         <item
-            android:id="@+id/_nav_feedback"
+            android:id="@+id/start_screen_menu_login"
             android:icon="@drawable/ic_menu_feedback"
             android:title="Login" />
 

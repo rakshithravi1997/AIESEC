@@ -1,14 +1,25 @@
 package com.android.gdgvit.aiesec.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.gdgvit.aiesec.R;
+import com.android.gdgvit.aiesec.model.SignupResponse;
+import com.android.gdgvit.aiesec.rest.ApiClient;
+import com.android.gdgvit.aiesec.rest.ApiInterface;
+
+import org.w3c.dom.Text;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +38,10 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    TextView name, email, raisedby, cp1,cp2,cp3;
+
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -58,14 +73,33 @@ public class ProfileFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+       View inf =inflater.inflate(R.layout.fragment_profile, container, false);
+
+
+        name = (TextView) inf.findViewById(R.id.name);
+        email = (TextView) inf.findViewById(R.id.email);
+        raisedby = (TextView) inf.findViewById(R.id.raisedby);
+        cp1 = (TextView) inf.findViewById(R.id.cpf1);
+        cp2 = (TextView) inf.findViewById(R.id.cpf2);
+        cp3 = (TextView) inf.findViewById(R.id.cpf3);
+
+
+
+
+
+                return inf;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -84,6 +118,8 @@ public class ProfileFragment extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+
+
     }
 
     @Override

@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="5"
+    android:id="@+id/start_screen_content_main"
+
     >
 
 <FrameLayout
