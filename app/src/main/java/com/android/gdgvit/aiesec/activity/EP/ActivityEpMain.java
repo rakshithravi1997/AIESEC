@@ -96,7 +96,7 @@ public class ActivityEpMain extends AppCompatActivity {
 
         DocumentsFragment df = new DocumentsFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragContainer,df).commit();
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout, mToolbar,R.string.app_name,
                 R.string.app_name);
@@ -110,7 +110,7 @@ public class ActivityEpMain extends AppCompatActivity {
 
                 if(position==0)
                 {
-
+                    mToolbar.setVisibility(View.GONE);
                     ProfileFragment pf = new ProfileFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragContainer,pf).commit();
                 }

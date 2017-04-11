@@ -109,7 +109,7 @@ public class ActivityLogin extends AppCompatActivity{
 
                         else if (response.body().getStatus().toString().equals("successfull")) {
 
-                            Toast.makeText(ActivityLogin.this, "Welcome:" + response.body().getUser().getName(), Toast.LENGTH_SHORT).show();
+
                             Intent i = new Intent(ActivityLogin.this, ActivityEpMain.class);
                             startActivity(i);
                         }

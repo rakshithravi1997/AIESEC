@@ -25,6 +25,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
@@ -48,13 +49,9 @@ public interface ApiInterface {
     @POST("uploads")
     Call<UploadResponse> uploadData(@Part("token") RequestBody token,@Part MultipartBody.Part image);*/
 
-    @POST("uploads")
-    Call<ResponseBody> upload(
-            @Header("app_id") String token, @Header("app_key") String content_disposition, @Body RequestBody photo,
-            /* GET params */ @QueryMap Map<String, String> params
-    );
-
-
-
-
+    @Multipart
+    @POST("upload")
+    Call<ResponseBody> uploadFileWithPartMap(
+            @PartMap() Map<String, RequestBody> partMap,
+            @Part MultipartBody.Part file);
 }
