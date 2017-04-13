@@ -1,3 +1,4 @@
+
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_content"
@@ -50,86 +51,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingTop="24dp"
+            android:paddingTop="8dp"
             android:id="@+id/innerLinearLayout"
             >
 
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    >
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Offers"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorPrimary"
-                        />
-                    <TextView
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        />
 
-                    <LinearLayout
-                        android:layout_marginLeft="16dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
-                        <TextView
-                            android:layout_marginTop="16dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorPrimary"
-                            android:text="1. Go to the availing shop."
-                            />
-                        <TextView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorPrimary"
-                            android:text="2. Scan the QR code of Pay Tab"
-                            />
-                        <TextView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorPrimary"
-                            android:text="3. Give your details in your mobile"
-                            />
-                        <TextView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorPrimary"
-                            android:text="4. And Enjoy"
-                            />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="2"
-                        >
-                        <TextView
-                            android:layout_marginTop="20dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:text="Pocket Saver"
-                            android:layout_gravity="center_vertical"
-                            android:textSize="15sp"
-                            android:textColor="@color/colorPrimary"
-                            android:textStyle="bold"
-                            />
                         <LinearLayout
-                            android:layout_marginLeft="48dp"
-                            android:layout_width="0dp"
+                            android:layout_margin="2dp"
+                            android:layout_width="match_parent"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
@@ -137,12 +67,184 @@
                             android:layout_gravity="center_vertical"
                             >
 
+                            <android.support.v7.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="30dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@color/white"
+                                app:elevation="8dp"
+                                >
 
-                        </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="16dp"
+                                    android:layout_marginBottom="16dp"
+                                    android:layout_marginTop="48dp"
+                                    android:layout_marginLeft="36dp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="24dp"
+                                        android:layout_marginBottom="16dp"
+                                        android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_person_black_24dp"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="12dp"
+                                            android:textStyle="bold"
+                                            android:text="Name:"/>
+                                    <TextView
+                                        android:id="@+id/name"
+                                        android:text="Name"
+                                        android:layout_marginLeft="12dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        />
+                                    </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="24dp"
+                                    android:layout_marginBottom="16dp"
+                                    android:orientation="horizontal">
+
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_email_black_24dp"/>
+
+                                    <TextView
+                                        android:textStyle="bold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="12dp"
+                                        android:text="Email:"/>
+
+                                    <TextView
+                                        android:id="@+id/email"
+                                        android:text="Email"
+                                        android:layout_marginLeft="12dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        />
+                                    </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="24dp"
+                                    android:layout_marginBottom="16dp"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_email_black_24dp"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="12dp"
+                                        android:textStyle="bold"
+                                        android:text="Raised By:"/>
+                                    <TextView
+                                        android:id="@+id/raisedby"
+                                        android:layout_marginLeft="12dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Raised By"
+                                        />
+                                    </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="24dp"
+                                    android:layout_marginBottom="16dp"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_email_black_24dp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="12dp"
+                                        android:textStyle="bold"
+                                        android:text="Country Pref 1:"/>
+                                    <TextView
+                                        android:id="@+id/cpf1"
+                                        android:layout_marginLeft="12dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Country 1"
+                                        />
+                                    </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="24dp"
+                                    android:layout_marginBottom="16dp"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_email_black_24dp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="12dp"
+                                        android:textStyle="bold"
+                                        android:text="Country Pref 2:"/>
+                                    <TextView
+                                        android:id="@+id/cpf2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="12dp"
+                                        android:text="Country 2"
+                                        />
+                                    </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="24dp"
+                                    android:layout_marginBottom="16dp"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_email_black_24dp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="12dp"
+                                        android:textStyle="bold"
+                                        android:text="Country Pref 3:"/>
+                                    <TextView
+                                        android:id="@+id/cpf3"
+                                        android:layout_marginLeft="12dp"
+
+                                        android:text="Country 3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </android.support.v7.widget.CardView>
+
+
 
                     </LinearLayout>
 
-                </LinearLayout>
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
@@ -150,7 +252,7 @@
         android:id="@+id/fabRest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="12dp"
         android:clickable="true"
         android:src="@drawable/ic_assignment_black_24dp"
         app:layout_anchor="@id/innerLinearLayout"
