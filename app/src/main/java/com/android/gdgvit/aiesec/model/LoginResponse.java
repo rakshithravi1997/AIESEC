@@ -16,6 +16,16 @@ public class LoginResponse {
     private String code;
     @SerializedName("user_data")
     private User user;
+    @SerializedName("is_admin")
+    private String isAdmin;
+
+    public String getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(String isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 
     public String getStatus() {
         return status;

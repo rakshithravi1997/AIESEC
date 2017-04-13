@@ -1,7 +1,9 @@
 package com.android.gdgvit.aiesec.activity.Main;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -44,6 +46,8 @@ public class ActivityLogin extends AppCompatActivity{
     private TextView tvCreateAccount;
     private String emailEntered;
     private String passwordEntered;
+    private SharedPreferences sp;
+    private SharedPreferences.Editor ed;
 
 
     @Override
@@ -60,6 +64,8 @@ public class ActivityLogin extends AppCompatActivity{
         etUserPassword = (EditText)findViewById(R.id.etUserPassword);
         tvCreateAccount = (TextView)findViewById(R.id.tvCreateAccount);
 
+
+        sp = PreferenceManager.getDefaultSharedPreferences(this);
         Animation in = AnimationUtils.loadAnimation(this,
                 android.R.anim.fade_in);
         Animation out = AnimationUtils.loadAnimation(this,
@@ -110,6 +116,17 @@ public class ActivityLogin extends AppCompatActivity{
                         else if (response.body().getStatus().toString().equals("successfull")) {
 
 
+                            Toast.makeText(ActivityLogin.this, ""+response.body().getStatus(), Toast.LENGTH_SHORT).show();
+                            ed = sp.edit();
+                            ed.putString("name",response.body().getUser().getName());
+                            ed.putString("contact",response.body().getUser().getContact());
+                            ed.putString("email",response.body().getUser().getEmail());
+                            ed.putString("cpf1",response.body().getUser().getCountryPreferences()[0]);
+                            ed.putString("cpf2",response.body().getUser().getCountryPreferences()[1]);
+                            ed.putString("cpf3",response.body().getUser().getCountryPreferences()[2]);
+                            ed.putString("raisedBy",response.body().getUser().getRaisedBy());
+                            ed.putString("isAdmin",response.body().getIsAdmin());
+                            ed.commit();
                             Intent i = new Intent(ActivityLogin.this, ActivityEpMain.class);
                             startActivity(i);
                         }

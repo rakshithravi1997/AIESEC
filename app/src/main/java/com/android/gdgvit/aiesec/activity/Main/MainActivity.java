@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.start_screen_menu_home) {
 
                 }
-                if (menuItem.getItemId() == R.id.nav_today_event) {
+              /*  if (menuItem.getItemId() == R.id.nav_today_event) {
 
                 }
 
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (menuItem.getItemId() == R.id.nav_my_club) {
 
-                }
+                }*/
 
 
 

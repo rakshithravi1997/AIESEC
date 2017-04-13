@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.android.gdgvit.aiesec.R;
+import com.android.gdgvit.aiesec.fragment.EP.AddUserFragment;
 import com.android.gdgvit.aiesec.fragment.EP.DocumentsFragment;
 import com.android.gdgvit.aiesec.fragment.EP.ProfileFragment;
 import com.android.gdgvit.aiesec.fragment.EP.ResourcesFragment;
@@ -69,14 +70,17 @@ public class ActivityEpMain extends AppCompatActivity {
                 if (item.getItemId() == R.id.nav_search) {
 
                 }
-                if (item.getItemId() == R.id.nav_today_event) {
+                if (item.getItemId() == R.id.nav_add_user) {
 
+
+                    AddUserFragment auf = new AddUserFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragContainer,auf).commit();
                 }
 
                 if (item.getItemId() == R.id.nav_live_stats) {
 
                 }
-                if (item.getItemId() == R.id.nav_registration) {
+               /* if (item.getItemId() == R.id.nav_registration) {
 
                 }
                 if (item.getItemId() == R.id.nav_my_club) {
@@ -88,7 +92,7 @@ public class ActivityEpMain extends AppCompatActivity {
                 if (item.getItemId() == R.id._nav_feedback) {
 
 
-                }
+                }*/
 
                 return false;
             }
