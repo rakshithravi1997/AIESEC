@@ -78,6 +78,14 @@ public class ActivityLogin extends AppCompatActivity{
         nextImageButton.setBackground(getDrawable(R.drawable.ic_chevron_right_black_24dp));
 
 
+        if(isLoggedIn())
+        {
+            Intent i = new Intent(ActivityLogin.this, ActivityEpMain.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+        }
+
         tvCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,8 +134,11 @@ public class ActivityLogin extends AppCompatActivity{
                             ed.putString("cpf3",response.body().getUser().getCountryPreferences()[2]);
                             ed.putString("raisedBy",response.body().getUser().getRaisedBy());
                             ed.putString("isAdmin",response.body().getIsAdmin());
+                            ed.putInt("LoggedIn",1);
                             ed.commit();
                             Intent i = new Intent(ActivityLogin.this, ActivityEpMain.class);
+                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(i);
                         }
                         else
@@ -187,6 +198,19 @@ public class ActivityLogin extends AppCompatActivity{
         });
 
 
+    }
+
+    private boolean isLoggedIn() {
+
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+
+        if(sp.getInt("LoggedIn",0)==1)
+        {
+            return true;
+        }
+        else
+            return false;
     }
 
     private boolean validate() {

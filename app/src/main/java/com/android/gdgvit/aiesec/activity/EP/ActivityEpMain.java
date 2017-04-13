@@ -1,8 +1,10 @@
 package com.android.gdgvit.aiesec.activity.EP;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.android.gdgvit.aiesec.R;
+import com.android.gdgvit.aiesec.activity.Main.StartActivity;
 import com.android.gdgvit.aiesec.fragment.EP.AddUserFragment;
 import com.android.gdgvit.aiesec.fragment.EP.DocumentsFragment;
 import com.android.gdgvit.aiesec.fragment.EP.ProfileFragment;
@@ -31,7 +34,8 @@ public class ActivityEpMain extends AppCompatActivity {
 
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
-    Fragment fragment;
+    SharedPreferences sps;
+    SharedPreferences.Editor ed;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,9 @@ public class ActivityEpMain extends AppCompatActivity {
         bottomNavigation.addItem(item2);
         bottomNavigation.addItem(item3);
 
+
+        sps = PreferenceManager.getDefaultSharedPreferences(this);
+
         bottomNavigation.setDefaultBackgroundColor(Color.parseColor("#FEFEFE"));
         bottomNavigation.setAccentColor(Color.parseColor("#9C27B0"));
         bottomNavigation.setInactiveColor(Color.parseColor("#9e9e9e"));
@@ -56,7 +63,7 @@ public class ActivityEpMain extends AppCompatActivity {
         bottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
 
         bottomNavigation.setCurrentItem(1);
-
+        final Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view) ;
@@ -72,12 +79,18 @@ public class ActivityEpMain extends AppCompatActivity {
                 }
                 if (item.getItemId() == R.id.nav_add_user) {
 
-
+                    mToolbar.setVisibility(View.VISIBLE);
                     AddUserFragment auf = new AddUserFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragContainer,auf).commit();
                 }
 
-                if (item.getItemId() == R.id.nav_live_stats) {
+                if (item.getItemId() == R.id.nav_logout){
+
+                    ed = sps.edit();
+                    ed.putInt("LoggedIn",0);
+                    ed.commit();
+                    Intent i = new Intent(getApplicationContext(), StartActivity.class);
+                    startActivity(i);
 
                 }
                /* if (item.getItemId() == R.id.nav_registration) {
@@ -100,7 +113,7 @@ public class ActivityEpMain extends AppCompatActivity {
 
         DocumentsFragment df = new DocumentsFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragContainer,df).commit();
-        final Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
         setSupportActionBar(mToolbar);
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout, mToolbar,R.string.app_name,
                 R.string.app_name);
@@ -150,5 +163,10 @@ public class ActivityEpMain extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

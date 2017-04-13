@@ -1,7 +1,10 @@
 package com.android.gdgvit.aiesec.activity.Main;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -58,6 +61,12 @@ public class StartActivity extends AppCompatActivity{
         ivLogo = (ImageView)findViewById(R.id.ivLogo);
         iv1 = (ImageView)findViewById(R.id.iv1);
 
+
+        if(isLoggedIn())
+        {
+            Intent i = new Intent(StartActivity.this, ActivityLogin.class);
+            startActivity(i);
+        }
 
 
         ivHamburger.setOnClickListener(new View.OnClickListener() {
@@ -191,6 +200,19 @@ public class StartActivity extends AppCompatActivity{
 
             }
         });
+    }
+
+    private boolean isLoggedIn() {
+
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+
+        if(sp.getInt("LoggedIn",0)==1)
+        {
+            return true;
+        }
+        else
+        return false;
     }
 
     private class ViewPagerAdapter extends FragmentPagerAdapter {
