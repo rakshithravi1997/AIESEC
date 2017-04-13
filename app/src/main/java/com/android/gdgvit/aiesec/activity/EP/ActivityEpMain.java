@@ -116,11 +116,13 @@ public class ActivityEpMain extends AppCompatActivity {
                 }
                 else if(position==1)
                 {
+                    mToolbar.setVisibility(View.VISIBLE);
                     DocumentsFragment df = new DocumentsFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragContainer,df).commit();
                 }
                 else if(position==2)
                 {
+                    mToolbar.setVisibility(View.VISIBLE);
                     ResourcesFragment rf = new ResourcesFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragContainer,rf).commit();
                 }

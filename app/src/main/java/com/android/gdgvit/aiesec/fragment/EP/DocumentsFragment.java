@@ -56,22 +56,15 @@ public class DocumentsFragment extends Fragment {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Do upload process
                 Intent intent = new Intent(getContext(), FileSelectionActivity.class);
                 startActivity(intent);
             }
         });
-
-
     }
-
     @Override
     public void onResume() {
         super.onResume();
-
         final AppDetails globalVariable = (AppDetails)getActivity().getApplicationContext();
-
-        // Get name and email from global/application context
         if (globalVariable.getFilesLocations().size() == 0) {
 
         } else {

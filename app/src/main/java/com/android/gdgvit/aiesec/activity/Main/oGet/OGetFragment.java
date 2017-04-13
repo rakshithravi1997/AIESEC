@@ -22,7 +22,7 @@ public class OGetFragment extends Fragment {
 
 
     private ViewPager vp;
-   // private CustomPagerAdapter adapter;
+    private CustomPagerAdapter adapter;
     int[] mResources = {
             R.drawable.ogt1,
             R.drawable.ogt2,
@@ -34,23 +34,17 @@ public class OGetFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         View root;
-        root = inflater.inflate(R.layout.sample_smooth,container,false);
-
-
-     //  init(root);
+        root = inflater.inflate(R.layout.fragment_oget,container,false);
+        init(root);
         return root;
-        
+ }
 
-    }
+    private void init(View root) {
 
- /*   private void init(View root) {
-
-        vp = (ViewPager) root.findViewById(R.id.vpOgt);
+        vp = (ViewPager)root.findViewById(R.id.vpOgt);
         adapter = new CustomPagerAdapter(root.getContext());
         vp.setAdapter(adapter);
-
     }
 
     class CustomPagerAdapter extends PagerAdapter {
@@ -89,5 +83,5 @@ public class OGetFragment extends Fragment {
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((LinearLayout) object);
         }
-    }*/
+    }
 }
