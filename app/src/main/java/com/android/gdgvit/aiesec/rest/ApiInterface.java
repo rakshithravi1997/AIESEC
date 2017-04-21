@@ -4,7 +4,9 @@ package com.android.gdgvit.aiesec.rest;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
+import com.android.gdgvit.aiesec.model.AddUserResponse;
 import com.android.gdgvit.aiesec.model.LoginResponse;
+import com.android.gdgvit.aiesec.model.LogoutResponse;
 import com.android.gdgvit.aiesec.model.SignupResponse;
 import com.android.gdgvit.aiesec.model.UploadResponse;
 import com.android.gdgvit.aiesec.utility.FileUtils;
@@ -49,9 +51,20 @@ public interface ApiInterface {
     @POST("uploads")
     Call<UploadResponse> uploadData(@Part("token") RequestBody token,@Part MultipartBody.Part image);*/
 
-    @Multipart
+   /* @Multipart
     @POST("upload")
     Call<ResponseBody> uploadFileWithPartMap(
             @PartMap() Map<String, RequestBody> partMap,
-            @Part MultipartBody.Part file);
+            @Part MultipartBody.Part file);*/
+
+    @FormUrlEncoded
+    @POST("admin/addUser")
+    Call<AddUserResponse> addUser(@Field("token") String token, @Field("aemail") String aemail, @Field("uemail") String uemal, @Field("body") String body);
+
+    @FormUrlEncoded
+    @POST("logout")
+    Call<LogoutResponse> logoutUser(@Field("token") String token);
+
+
+
 }

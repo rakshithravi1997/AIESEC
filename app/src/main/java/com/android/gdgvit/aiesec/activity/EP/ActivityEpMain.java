@@ -1,5 +1,6 @@
 package com.android.gdgvit.aiesec.activity.EP;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -13,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -23,8 +25,15 @@ import com.android.gdgvit.aiesec.fragment.EP.AddUserFragment;
 import com.android.gdgvit.aiesec.fragment.EP.DocumentsFragment;
 import com.android.gdgvit.aiesec.fragment.EP.ProfileFragment;
 import com.android.gdgvit.aiesec.fragment.EP.ResourcesFragment;
+import com.android.gdgvit.aiesec.model.LogoutResponse;
+import com.android.gdgvit.aiesec.rest.ApiClient;
+import com.android.gdgvit.aiesec.rest.ApiInterface;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Shuvam Ghosh on 3/29/2017.
@@ -86,11 +95,41 @@ public class ActivityEpMain extends AppCompatActivity {
 
                 if (item.getItemId() == R.id.nav_logout){
 
+
+                    ProgressDialog progressDialog = new ProgressDialog(ActivityEpMain.this);
+                    progressDialog.setTitle("Logging Out");
+                    progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                    progressDialog.show();
                     ed = sps.edit();
                     ed.putInt("LoggedIn",0);
                     ed.commit();
-                    Intent i = new Intent(getApplicationContext(), StartActivity.class);
-                    startActivity(i);
+
+                    ApiInterface apiInterface = ApiClient.getLogoutClient(ActivityEpMain.this).create(ApiInterface.class);
+                    Call<LogoutResponse> logoutResponseCall = apiInterface.logoutUser("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pc2hhbnQubmlqYWd1bmE4QGFpZXNlYy5uZXQiLCJ0aW1lIjoiMjMtMDMtMjAxNyAwNTozOCBQTSJ9.D3_yki5HlFdwzOcB2IBqaT65SA5mg2GlXFQpZ_MncxE");
+
+
+                    logoutResponseCall.enqueue(new Callback<LogoutResponse>() {
+                        @Override
+                        public void onResponse(Call<LogoutResponse> call, Response<LogoutResponse> response) {
+
+                            Log.d("Logout Response:",""+""+response.body().getStatus());
+
+                            Intent i = new Intent(getApplicationContext(), StartActivity.class);
+                            startActivity(i);
+                        }
+
+                        @Override
+                        public void onFailure(Call<LogoutResponse> call, Throwable t) {
+
+                            Log.d("Logout Response:","Failed");
+
+
+                        }
+                    });
+
+
+
+
 
                 }
                /* if (item.getItemId() == R.id.nav_registration) {

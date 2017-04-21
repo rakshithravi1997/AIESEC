@@ -1,10 +1,13 @@
 package com.android.gdgvit.aiesec.fragment.EP;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +17,6 @@ import android.widget.Toast;
 import com.android.gdgvit.aiesec.R;
 import com.android.gdgvit.aiesec.activity.FileSelection.FileSelectionActivity;
 import com.android.gdgvit.aiesec.utility.AppDetails;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -27,6 +29,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.RECORD_AUDIO;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
 
 /**
  * Created by Shuvam Ghosh on 3/29/2017.
@@ -38,6 +44,7 @@ public class DocumentsFragment extends Fragment {
     private Button btnUpload;
     private String TAG = "The tag";
     private String tokenStr = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pc2hhbnQubmlqYWd1bmE4QGFpZXNlYy5uZXQiLCJ0aW1lIjoiMjMtMDMtMjAxNyAwNTozOCBQTSJ9.D3_yki5HlFdwzOcB2IBqaT65SA5mg2GlXFQpZ_MncxE";
+    public static final int RequestPermissionCode = 1;
 
     @Nullable
     @Override
@@ -49,6 +56,27 @@ public class DocumentsFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case RequestPermissionCode:
+                if (grantResults.length> 0) {
+                    boolean StoragePermission = grantResults[0] ==
+                            PackageManager.PERMISSION_GRANTED;
+                    boolean RecordPermission = grantResults[1] ==
+                            PackageManager.PERMISSION_GRANTED;
+
+                    if (StoragePermission && RecordPermission) {
+                        Toast.makeText(getContext(), "Permission Granted",
+                                Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getContext(),"Permission Denied",Toast.LENGTH_LONG).show();
+                    }
+                }
+                break;
+        }
+    }
     private void init(View root) {
 
         btnUpload = (Button) root.findViewById(R.id.btnUpload);
@@ -56,11 +84,34 @@ public class DocumentsFragment extends Fragment {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), FileSelectionActivity.class);
-                startActivity(intent);
+
+
+                if(checkPermission()) {
+                    Intent intent = new Intent(getContext(), FileSelectionActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    requestPermission();
+                }
             }
         });
     }
+
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(getActivity(), new
+                String[]{WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, RequestPermissionCode);
+    }
+
+    public boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(getContext(),
+                WRITE_EXTERNAL_STORAGE);
+        int result1 = ContextCompat.checkSelfPermission(getContext(),
+                READ_EXTERNAL_STORAGE);
+        return result == PackageManager.PERMISSION_GRANTED &&
+                result1 == PackageManager.PERMISSION_GRANTED;
+    }
+
     @Override
     public void onResume() {
         super.onResume();
