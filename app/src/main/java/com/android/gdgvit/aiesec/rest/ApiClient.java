@@ -24,7 +24,7 @@ public class ApiClient {
     public static final String BASE_LOGOUT_URL = "http://139.59.62.236:8000/";
     private static Retrofit retrofit = null;
 
-    public static Retrofit getClient(final Context context) {
+    public static Retrofit getClient(final Context context, String baseUrl) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         if (retrofit==null) {
@@ -39,30 +39,7 @@ public class ApiClient {
                     })
                     .build();
             retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(ok.newBuilder().connectTimeout(30, TimeUnit.SECONDS).readTimeout(30, TimeUnit.SECONDS).writeTimeout(30, TimeUnit.SECONDS).build())
-                    .build();
-        }
-        return retrofit;
-    }
-
-    public static Retrofit getLogoutClient(final Context context) {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        if (retrofit==null) {
-            OkHttpClient ok=new OkHttpClient.Builder()
-                    .addInterceptor(interceptor)
-                    .addInterceptor(new Interceptor() {
-                        @Override
-                        public Response intercept(Chain chain) throws IOException {
-                            Request request=chain.request().newBuilder().addHeader("access-token", Preferences.getPrefs(Consts.TOKEN_SP_KEY,context)).build();
-                            return chain.proceed(request);
-                        }
-                    })
-                    .build();
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_LOGOUT_URL)
+                    .baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(ok.newBuilder().connectTimeout(30, TimeUnit.SECONDS).readTimeout(30, TimeUnit.SECONDS).writeTimeout(30, TimeUnit.SECONDS).build())
                     .build();

@@ -30,6 +30,7 @@ public class SignUpActivity extends AppCompatActivity{
     EditText name, email, password, raisedby, cp1, cp2, cp3, contactno;
     String recName, recEmail, recPassword, recRaisedby, recCp1, recCp2, recCp3, recContact;
     Button btnSignup;
+    private String BaseUrl = "http://139.59.62.236:8000/ep/";
 
 
     @Override
@@ -65,11 +66,11 @@ public class SignUpActivity extends AppCompatActivity{
                 recContact = contactno.getText().toString();
 
 
-                ApiInterface apiService = ApiClient.getClient(SignUpActivity.this).create(ApiInterface.class);
-                Call<SignupResponse> signup = apiService.signupUser(recEmail,recPassword,recName,recRaisedby,recCp1,recCp2,recCp3,recContact);
+              //  ApiInterface apiService = ApiClient.getClient(SignUpActivity.this,BaseUrl).create(ApiInterface.class);
+              //  Call<SignupResponse> signup = apiService.signupUser(recEmail,recPassword,recName,recRaisedby,recCp1,recCp2,recCp3,recContact);
 
 
-                signup.enqueue(new Callback<SignupResponse>() {
+                /*signup.enqueue(new Callback<SignupResponse>() {
                     @Override
                     public void onResponse(Call<SignupResponse> call, Response<SignupResponse> response) {
 
@@ -92,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity{
                     public void onFailure(Call<SignupResponse> call, Throwable t) {
 
                     }
-                });
+                });*/
             }
         });
         getSupportActionBar().setTitle("Sign Up");

@@ -34,6 +34,8 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Shuvam Ghosh on 3/29/2017.
@@ -45,6 +47,7 @@ public class ActivityEpMain extends AppCompatActivity {
     NavigationView mNavigationView;
     SharedPreferences sps;
     SharedPreferences.Editor ed;
+    String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pc2hhbnQubmlqYWd1bmE4QGFpZXNlYy5uZXQiLCJ0aW1lIjoiMjMtMDMtMjAxNyAwNTozOCBQTSJ9.D3_yki5HlFdwzOcB2IBqaT65SA5mg2GlXFQpZ_MncxE";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,24 +99,26 @@ public class ActivityEpMain extends AppCompatActivity {
                 if (item.getItemId() == R.id.nav_logout){
 
 
-                    ProgressDialog progressDialog = new ProgressDialog(ActivityEpMain.this);
-                    progressDialog.setTitle("Logging Out");
-                    progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                    progressDialog.show();
                     ed = sps.edit();
                     ed.putInt("LoggedIn",0);
                     ed.commit();
 
-                    ApiInterface apiInterface = ApiClient.getLogoutClient(ActivityEpMain.this).create(ApiInterface.class);
-                    Call<LogoutResponse> logoutResponseCall = apiInterface.logoutUser("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pc2hhbnQubmlqYWd1bmE4QGFpZXNlYy5uZXQiLCJ0aW1lIjoiMjMtMDMtMjAxNyAwNTozOCBQTSJ9.D3_yki5HlFdwzOcB2IBqaT65SA5mg2GlXFQpZ_MncxE");
 
 
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl("http://139.59.62.236:8000/")
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+                    ApiInterface apiService = retrofit.create(ApiInterface.class);
+
+
+                    Call<LogoutResponse> logoutResponseCall = apiService.logoutUser(token);
                     logoutResponseCall.enqueue(new Callback<LogoutResponse>() {
                         @Override
                         public void onResponse(Call<LogoutResponse> call, Response<LogoutResponse> response) {
 
-                            Log.d("Logout Response:",""+""+response.body().getStatus());
-
+                            Log.d("Logout Response",response.body().getStatus());
                             Intent i = new Intent(getApplicationContext(), StartActivity.class);
                             startActivity(i);
                         }
@@ -121,13 +126,8 @@ public class ActivityEpMain extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<LogoutResponse> call, Throwable t) {
 
-                            Log.d("Logout Response:","Failed");
-
-
                         }
                     });
-
-
 
 
 

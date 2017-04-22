@@ -38,11 +38,12 @@ public class AddUserFragment extends Fragment {
     EditText etUserEmail;
     EditText etAdminEmail;
     Spinner spinner;
-    String token;
+    String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pc2hhbnQubmlqYWd1bmE4QGFpZXNlYy5uZXQiLCJ0aW1lIjoiMjMtMDMtMjAxNyAwNTozOCBQTSJ9.D3_yki5HlFdwzOcB2IBqaT65SA5mg2GlXFQpZ_MncxE";
     String body;
     String input;
     Button btnAdd;
     ProgressBar pBar;
+    private String BaseUrl = "http://139.59.62.236:8000/ep/";
 
     @Nullable
     @Override
@@ -78,7 +79,7 @@ public class AddUserFragment extends Fragment {
                         body = "gb";
 
 
-                    ApiInterface apiService = ApiClient.getClient(getContext()).create(ApiInterface.class);
+                    ApiInterface apiService = ApiClient.getClient(getContext(),BaseUrl).create(ApiInterface.class);
                     Call<AddUserResponse> addUser = apiService.addUser(token, etAdminEmail.getText().toString(), etUserEmail.getText().toString(), body);
 
                     addUser.enqueue(new Callback<AddUserResponse>() {
@@ -101,9 +102,6 @@ public class AddUserFragment extends Fragment {
 
                         }
                     });
-
-
-
                 }
                 else
                 {
@@ -123,6 +121,8 @@ public class AddUserFragment extends Fragment {
     }
 
     private void init(View root) {
+
+       // token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pc2hhbnQubmlqYWd1bmE4QGFpZXNlYy5uZXQiLCJ0aW1lIjoiMjMtMDMtMjAxNyAwNTozOCBQTSJ9.D3_yki5HlFdwzOcB2IBqaT65SA5mg2GlXFQpZ_MncxE";
 
         pBar = (ProgressBar)root.findViewById(R.id.progreeBar);
 
