@@ -1,4 +1,5 @@
 package com.android.gdgvit.aiesec.fragment.EP;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -13,8 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.android.gdgvit.aiesec.R;
+import com.android.gdgvit.aiesec.activity.EP.ActivityEpMain;
 import com.android.gdgvit.aiesec.activity.FileSelection.FileSelectionActivity;
 import com.android.gdgvit.aiesec.utility.AppDetails;
 import org.apache.http.HttpResponse;
@@ -45,6 +48,7 @@ public class DocumentsFragment extends Fragment {
     private String TAG = "The tag";
     private String tokenStr = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pc2hhbnQubmlqYWd1bmE4QGFpZXNlYy5uZXQiLCJ0aW1lIjoiMjMtMDMtMjAxNyAwNTozOCBQTSJ9.D3_yki5HlFdwzOcB2IBqaT65SA5mg2GlXFQpZ_MncxE";
     public static final int RequestPermissionCode = 1;
+    private Dialog progressDialog;
 
     @Nullable
     @Override
@@ -70,6 +74,8 @@ public class DocumentsFragment extends Fragment {
                     if (StoragePermission && RecordPermission) {
                         Toast.makeText(getContext(), "Permission Granted",
                                 Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getContext(), FileSelectionActivity.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(getContext(),"Permission Denied",Toast.LENGTH_LONG).show();
                     }
@@ -78,14 +84,13 @@ public class DocumentsFragment extends Fragment {
         }
     }
     private void init(View root) {
+        requestPermission();
 
         btnUpload = (Button) root.findViewById(R.id.btnUpload);
 
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if(checkPermission()) {
                     Intent intent = new Intent(getContext(), FileSelectionActivity.class);
                     startActivity(intent);
@@ -101,6 +106,8 @@ public class DocumentsFragment extends Fragment {
     private void requestPermission() {
         ActivityCompat.requestPermissions(getActivity(), new
                 String[]{WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, RequestPermissionCode);
+        /*Intent intent = new Intent(getContext(), FileSelectionActivity.class);
+        startActivity(intent);*/
     }
 
     public boolean checkPermission() {
@@ -115,10 +122,21 @@ public class DocumentsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
+
+
         final AppDetails globalVariable = (AppDetails)getActivity().getApplicationContext();
         if (globalVariable.getFilesLocations().size() == 0) {
 
         } else {
+
+            progressDialog = new Dialog(getContext());
+            progressDialog.setContentView(R.layout.dialog_view);
+            TextView tvDialog = (TextView)progressDialog.findViewById(R.id.tvDialogContent);
+            tvDialog.setText("Uploading");
+            progressDialog.show();
+
+
             Log.d("First file location is:", globalVariable.getFilesLocations().get(0).toString());
             Uri external = Uri.fromFile(globalVariable.getFilesLocations().get(0));
             final File file = new File(String.valueOf(globalVariable.getFilesLocations().get(0)));
@@ -175,6 +193,7 @@ public class DocumentsFragment extends Fragment {
         protected void onPostExecute(String temp) {
             Toast.makeText(getContext(), "Upload Successful", Toast.LENGTH_SHORT).show();
             Log.d("Upload Response",temp);
+            progressDialog.cancel();
         }
     }
 }
