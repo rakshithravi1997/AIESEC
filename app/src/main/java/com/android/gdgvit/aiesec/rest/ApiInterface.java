@@ -41,7 +41,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("login")
-    Call<LoginResponse> updateUser(@Field("email") String email, @Field("pswd") String password);
+    Call<LoginResponse> updateUser(@Field("email") String email, @Field("pswd") String password, @Field("member") String member);
 
     @FormUrlEncoded
     @POST("signup")

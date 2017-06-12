@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    public static final String BASE_URL = "http://139.59.62.236:8000/ep/";
+    public static final String BASE_URL = "http://139.59.62.236:8000/";
     public static final String BASE_LOGOUT_URL = "http://139.59.62.236:8000/";
     private static Retrofit retrofit = null;
 

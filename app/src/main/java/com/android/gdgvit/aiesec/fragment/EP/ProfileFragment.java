@@ -52,7 +52,6 @@ public class ProfileFragment extends Fragment {
         tvCpf3.setText("3. "+spf.getString("cpf3","null"));
         tvRaisedBy.setText(spf.getString("raisedBy","null"));
 
-
     }
 
     private void init(View root) {
