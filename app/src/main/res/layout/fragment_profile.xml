@@ -199,15 +199,7 @@
                         android:layout_height="wrap_content"
                         android:text="3. UK"
                         />
-
                 </LinearLayout>
-
-
-
-
-
-
-
             </LinearLayout>
 
         </LinearLayout>
