@@ -10,21 +10,41 @@ import java.util.ArrayList;
 
 public class LoginResponse {
 
-    @SerializedName("status")
+    @SerializedName("msg")
     private String status;
     @SerializedName("code")
     private String code;
     @SerializedName("user_data")
     private User user;
     @SerializedName("is_admin")
-    private String isAdmin;
+    private Boolean isAdmin;
+    @SerializedName("token")
+    private  String token;
+    @SerializedName("member")
+    private String member;
 
-    public String getIsAdmin() {
+    public Boolean getAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(String isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
+    }
+
+    public String getMember() {
+        return member;
+    }
+
+    public void setMember(String member) {
+        this.member = member;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getStatus() {

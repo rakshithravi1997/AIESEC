@@ -44,17 +44,18 @@ public class ActivityLogin extends AppCompatActivity{
     private TextSwitcher textSwitcher;
     private ImageButton nextImageButton;
     private ImageButton previousImageButton;
-    private String textNonAisec = "NON-AIESECER";
+    private String textNonAisec = "EP";
     private String textAisec = "AIESECER";
     private Button btnSignIn;
     private EditText etUserEmail;
     private EditText etUserPassword;
     private TextView tvCreateAccount;
     private String emailEntered;
-    private String passwordEntered;
+    private String passwordEntered, memberEntered;
     private SharedPreferences sp;
     private SharedPreferences.Editor ed;
     private String BaseUrl = "http://139.59.62.236:8000/ep/";
+    private Integer flagmember=0;
 
 
 
@@ -109,6 +110,10 @@ public class ActivityLogin extends AppCompatActivity{
             public void onClick(View view) {
                 emailEntered = etUserEmail.getText().toString();
                 passwordEntered = etUserPassword.getText().toString();
+                if(flagmember==0)
+                    memberEntered="aiesec";
+                else
+                    memberEntered="ep";
 
                 if (validate() == true) {
 
@@ -116,7 +121,7 @@ public class ActivityLogin extends AppCompatActivity{
 
                    // ApiInterface apiService = ApiClient.getClient(ActivityLogin.this,BaseUrl).create(ApiInterface.class);
                     Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl("http://139.59.62.236:8000/ep/")
+                            .baseUrl("http://139.59.62.236:8000/")
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
 
@@ -124,22 +129,15 @@ public class ActivityLogin extends AppCompatActivity{
 
 
 
-                Call<LoginResponse> login = apiService.updateUser(emailEntered, passwordEntered);
+                Call<LoginResponse> login = apiService.updateUser(emailEntered, passwordEntered, memberEntered);
 
                 login.enqueue(new Callback<LoginResponse>() {
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
 
-                        if (response.body().getStatus().toString().equals("invalid_password")) {
-                            Toast.makeText(ActivityLogin.this, "Invalid Password", Toast.LENGTH_SHORT).show();
-                            btnSignIn.setText("Sign In");
-                        }
-                        else if(response.body().getStatus().toString().equals("invalid_email")){
-                            Toast.makeText(ActivityLogin.this, "Invalid Email", Toast.LENGTH_SHORT).show();
-                            btnSignIn.setText("Sign In");
-                        }
 
-                        else if (response.body().getStatus().toString().equals("successfull")) {
+
+                        if (response.body().getStatus().equals("successful")) {
 
 
                             Toast.makeText(ActivityLogin.this, ""+response.body().getStatus(), Toast.LENGTH_SHORT).show();
@@ -151,7 +149,7 @@ public class ActivityLogin extends AppCompatActivity{
                             ed.putString("cpf2",response.body().getUser().getCountryPreferences()[1]);
                             ed.putString("cpf3",response.body().getUser().getCountryPreferences()[2]);
                             ed.putString("raisedBy",response.body().getUser().getRaisedBy());
-                            ed.putString("isAdmin",response.body().getIsAdmin());
+                            ed.putBoolean("isAdmin",response.body().getAdmin());
                             ed.putInt("LoggedIn",1);
                             ed.commit();
                             Intent i = new Intent(ActivityLogin.this, ActivityEpMain.class);
@@ -192,6 +190,7 @@ public class ActivityLogin extends AppCompatActivity{
                 textSwitcher.setInAnimation(in);
                 textSwitcher.setOutAnimation(out);
                 textSwitcher.setText(textNonAisec);
+                flagmember=1;
 
                 previousImageButton.setBackground(getDrawable(R.drawable.ic_chevron_left_black_24dp));
                 nextImageButton.setBackground(getDrawable(R.drawable.ic_chevron_right_blackdark_24dp));
@@ -209,6 +208,7 @@ public class ActivityLogin extends AppCompatActivity{
                 textSwitcher.setInAnimation(in);
                 textSwitcher.setOutAnimation(out);
                 textSwitcher.setText(textAisec);
+                flagmember=0;
 
                 previousImageButton.setBackground(getDrawable(R.drawable.ic_chevron_left_blackdark_24dp));
                 nextImageButton.setBackground(getDrawable(R.drawable.ic_chevron_right_black_24dp));
