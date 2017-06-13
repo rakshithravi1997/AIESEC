@@ -20,12 +20,8 @@ import android.widget.ViewSwitcher;
 
 import com.android.gdgvit.aiesec.R;
 import com.android.gdgvit.aiesec.activity.EP.ActivityEpMain;
-import com.android.gdgvit.aiesec.activity.EP.ActivityEpMain;
-import com.android.gdgvit.aiesec.model.AddUserResponse;
+import com.android.gdgvit.aiesec.activity.EP.EPSignUpActivity;
 import com.android.gdgvit.aiesec.model.LoginResponse;
-import com.android.gdgvit.aiesec.model.LogoutResponse;
-import com.android.gdgvit.aiesec.model.SignupResponse;
-import com.android.gdgvit.aiesec.rest.ApiClient;
 import com.android.gdgvit.aiesec.rest.ApiInterface;
 
 import retrofit2.Call;
@@ -33,7 +29,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Field;
 
 /**
  * Created by Shuvam Ghosh on 1/25/2017.
@@ -98,7 +93,7 @@ public class ActivityLogin extends AppCompatActivity{
         tvCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ActivityLogin.this,SignUpActivity.class);
+                Intent i = new Intent(ActivityLogin.this,EPSignUpActivity.class);
                 startActivity(i);
             }
         });

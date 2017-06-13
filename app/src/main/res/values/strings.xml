@@ -26,13 +26,13 @@
     <string name="tab_3">Resources</string>
 
 
-        <string-array name="admin_choices">
-            <item>Enter your choice</item>
-            <item>Execution Body</item>
-            <item>Managament Body</item>
-            <item>General Body</item>
+    <string-array name="admin_choices">
+        <item>Enter your choice</item>
+        <item>Execution Body</item>
+        <item>Managament Body</item>
+        <item>General Body</item>
 
-        </string-array>
+    </string-array>
 
 </resources>
 

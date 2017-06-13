@@ -14,7 +14,7 @@ public class LoginResponse {
     private String status;
     @SerializedName("code")
     private String code;
-    @SerializedName("user_data")
+    @SerializedName("udata")
     private User user;
     @SerializedName("is_admin")
     private Boolean isAdmin;

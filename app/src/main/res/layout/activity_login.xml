@@ -98,7 +98,7 @@
                android:id="@+id/etUserEmail"
                android:hint="Email Address"
                android:textSize="16sp"
-               android:text="apple"
+               android:text="user@gmail.com"
                android:textColorHint="@color/colorPrimary"
                android:backgroundTint="@color/colorPrimary"
                />

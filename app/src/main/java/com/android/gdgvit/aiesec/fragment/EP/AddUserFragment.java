@@ -1,7 +1,6 @@
 package com.android.gdgvit.aiesec.fragment.EP;
 
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,11 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.gdgvit.aiesec.R;
-import com.android.gdgvit.aiesec.activity.Main.ActivityLogin;
-import com.android.gdgvit.aiesec.activity.Main.SignUpActivity;
 import com.android.gdgvit.aiesec.model.AddUserResponse;
-import com.android.gdgvit.aiesec.model.LoginResponse;
-import com.android.gdgvit.aiesec.model.SignupResponse;
 import com.android.gdgvit.aiesec.rest.ApiClient;
 import com.android.gdgvit.aiesec.rest.ApiInterface;
 
