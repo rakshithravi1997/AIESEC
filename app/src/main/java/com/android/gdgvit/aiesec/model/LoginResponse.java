@@ -14,22 +14,15 @@ public class LoginResponse {
     private String status;
     @SerializedName("code")
     private String code;
-    @SerializedName("user_data")
+    @SerializedName("udata")
     private User user;
-    @SerializedName("is_admin")
-    private Boolean isAdmin;
+    @SerializedName("raisedBy")
+    private String raisedby;
     @SerializedName("token")
     private  String token;
     @SerializedName("member")
     private String member;
 
-    public Boolean getAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
-    }
 
     public String getMember() {
         return member;

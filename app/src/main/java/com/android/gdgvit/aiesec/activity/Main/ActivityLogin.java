@@ -20,12 +20,9 @@ import android.widget.ViewSwitcher;
 
 import com.android.gdgvit.aiesec.R;
 import com.android.gdgvit.aiesec.activity.EP.ActivityEpMain;
-import com.android.gdgvit.aiesec.activity.EP.ActivityEpMain;
-import com.android.gdgvit.aiesec.model.AddUserResponse;
+import com.android.gdgvit.aiesec.activity.EP.EPSignUpActivity;
+import com.android.gdgvit.aiesec.activity.Main.oGet.SignUpActivity;
 import com.android.gdgvit.aiesec.model.LoginResponse;
-import com.android.gdgvit.aiesec.model.LogoutResponse;
-import com.android.gdgvit.aiesec.model.SignupResponse;
-import com.android.gdgvit.aiesec.rest.ApiClient;
 import com.android.gdgvit.aiesec.rest.ApiInterface;
 
 import retrofit2.Call;
@@ -33,7 +30,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Field;
 
 /**
  * Created by Shuvam Ghosh on 1/25/2017.
@@ -149,12 +145,13 @@ public class ActivityLogin extends AppCompatActivity{
                             ed.putString("cpf2",response.body().getUser().getCountryPreferences()[1]);
                             ed.putString("cpf3",response.body().getUser().getCountryPreferences()[2]);
                             ed.putString("raisedBy",response.body().getUser().getRaisedBy());
-                            ed.putBoolean("isAdmin",response.body().getAdmin());
+
                             ed.putInt("LoggedIn",1);
                             ed.commit();
                             Intent i = new Intent(ActivityLogin.this, ActivityEpMain.class);
                             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            Toast.makeText(ActivityLogin.this, "Welcome", Toast.LENGTH_SHORT).show();
                             startActivity(i);
                         }
                         else

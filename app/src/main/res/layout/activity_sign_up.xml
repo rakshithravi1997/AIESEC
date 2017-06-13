@@ -12,154 +12,60 @@
         android:layout_margin="16dp"
         android:paddingBottom="32dp"
         >
-<android.support.v7.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    card_view:cardUseCompatPadding="true"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    >
-
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="32dp"
-    android:gravity="center"
-    >
-
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <EditText
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
-            android:id="@+id/etName"
-            android:textSize="16sp"
-            />
+            android:layout_margin="8dp"
+            card_view:cardUseCompatPadding="true"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            >
 
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:id="@+id/etEmail"
-            android:textSize="16sp"
-            />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:id="@+id/etPassword"
-            android:textSize="16sp"
-            />
-
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Raised by"
-            android:id="@+id/etRaisedBy"
-            android:textSize="16sp"
-            />
-
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Country Preference 1"
-            android:id="@+id/etCountryPref1"
-            android:textSize="16sp"
-            />
-
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Country Preference 2"
-            android:id="@+id/etCountryPref2"
-            android:textSize="16sp"
-            />
-
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Country Preference 3"
-            android:id="@+id/etCountryPref3"
-            android:textSize="16sp"
-            />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Contact number"
-            android:id="@+id/etContactNo"
-            android:textSize="16sp"
-            />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <Button
-        android:layout_marginTop="32dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:textSize="14sp"
-        android:id="@+id/btnSignUp"
-        android:textAllCaps="false"
-        android:padding="8dp"
-        android:textColor="@color/white"
-        android:background="@drawable/button_backie"
-        />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="32dp"
+                android:gravity="center"
+                >
 
 
-</LinearLayout>
-</android.support.v7.widget.CardView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SIGN UP"
+                    android:textSize="16dp"
+                    android:textAlignment="center"/>
+
+                <Button
+                    android:layout_marginTop="32dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="AIESEC"
+                    android:textSize="14sp"
+                    android:id="@+id/btnSignUpAiesec"
+                    android:textAllCaps="false"
+                    android:padding="8dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_backie"
+                    />
+
+
+
+                <Button
+                    android:layout_marginTop="32dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="EP"
+                    android:textSize="14sp"
+                    android:id="@+id/btnSignUpEP"
+                    android:textAllCaps="false"
+                    android:padding="8dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_backie"
+                    />
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 </ScrollView>
