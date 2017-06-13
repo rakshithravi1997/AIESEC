@@ -1,13 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_sign_up"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.android.gdgvit.aiesec.activity.Main.oGet.SignUpActivity">
 
-</RelativeLayout>
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#ececec">
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:paddingBottom="32dp"
+        >
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            card_view:cardUseCompatPadding="true"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="32dp"
+                android:gravity="center"
+                >
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SIGN UP"
+                    android:textSize="16dp"
+                    android:textAlignment="center"/>
+
+                <Button
+                    android:layout_marginTop="32dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="AIESEC"
+                    android:textSize="14sp"
+                    android:id="@+id/btnSignUpAiesec"
+                    android:textAllCaps="false"
+                    android:padding="8dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_backie"
+                    />
+
+
+
+                <Button
+                    android:layout_marginTop="32dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="EP"
+                    android:textSize="14sp"
+                    android:id="@+id/btnSignUpEP"
+                    android:textAllCaps="false"
+                    android:padding="8dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_backie"
+                    />
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</ScrollView>

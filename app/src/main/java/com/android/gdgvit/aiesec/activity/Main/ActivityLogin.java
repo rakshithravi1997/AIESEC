@@ -21,6 +21,7 @@ import android.widget.ViewSwitcher;
 import com.android.gdgvit.aiesec.R;
 import com.android.gdgvit.aiesec.activity.EP.ActivityEpMain;
 import com.android.gdgvit.aiesec.activity.EP.EPSignUpActivity;
+import com.android.gdgvit.aiesec.activity.Main.oGet.SignUpActivity;
 import com.android.gdgvit.aiesec.model.LoginResponse;
 import com.android.gdgvit.aiesec.rest.ApiInterface;
 
@@ -93,7 +94,7 @@ public class ActivityLogin extends AppCompatActivity{
         tvCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ActivityLogin.this,EPSignUpActivity.class);
+                Intent i = new Intent(ActivityLogin.this,SignUpActivity.class);
                 startActivity(i);
             }
         });
@@ -144,12 +145,13 @@ public class ActivityLogin extends AppCompatActivity{
                             ed.putString("cpf2",response.body().getUser().getCountryPreferences()[1]);
                             ed.putString("cpf3",response.body().getUser().getCountryPreferences()[2]);
                             ed.putString("raisedBy",response.body().getUser().getRaisedBy());
-                            ed.putBoolean("isAdmin",response.body().getAdmin());
+
                             ed.putInt("LoggedIn",1);
                             ed.commit();
                             Intent i = new Intent(ActivityLogin.this, ActivityEpMain.class);
                             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            Toast.makeText(ActivityLogin.this, "Welcome", Toast.LENGTH_SHORT).show();
                             startActivity(i);
                         }
                         else

@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.gdgvit.aiesec.R;
+import com.android.gdgvit.aiesec.activity.Main.ActivityLogin;
 import com.android.gdgvit.aiesec.model.SignupResponse;
 import com.android.gdgvit.aiesec.rest.ApiClient;
 import com.android.gdgvit.aiesec.rest.ApiInterface;
@@ -80,7 +81,7 @@ public class EPSignUpActivity extends AppCompatActivity{
                         if (response.body().getStatus().toString().equals("raised")) {
 
                             Toast.makeText(EPSignUpActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
-                            Intent in = new Intent(EPSignUpActivity.this,ActivityEpMain.class);
+                            Intent in = new Intent(EPSignUpActivity.this, ActivityLogin.class);
                             startActivity(in);
                             // Log.d("User_name:",""+response.body().getUser().getName());
                         }
@@ -92,6 +93,7 @@ public class EPSignUpActivity extends AppCompatActivity{
                     }
                 });
             }
+
         });
         getSupportActionBar().setTitle("Sign Up");
     }
