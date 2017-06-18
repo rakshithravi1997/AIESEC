@@ -51,6 +51,15 @@ public class StartActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        if(isLoggedIn())
+        {
+            Intent i = new Intent(StartActivity.this, ActivityLogin.class);
+            startActivity(i);
+            finish();
+            return;
+        }
+        
         setContentView(R.layout.activity_start);
         vp = (ViewPager)findViewById(R.id.viewPagerOnboarding);
         adapter = new StartActivity.ViewPagerAdapter(getSupportFragmentManager());
@@ -60,14 +69,6 @@ public class StartActivity extends AppCompatActivity{
         animAlpha = AnimationUtils.loadAnimation(this,R.anim.alphaanim);
         ivLogo = (ImageView)findViewById(R.id.ivLogo);
         iv1 = (ImageView)findViewById(R.id.iv1);
-
-
-        if(isLoggedIn())
-        {
-            Intent i = new Intent(StartActivity.this, ActivityLogin.class);
-            startActivity(i);
-        }
-
 
         ivHamburger.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,11 +209,9 @@ public class StartActivity extends AppCompatActivity{
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 
         if(sp.getInt("LoggedIn",0)==1)
-        {
             return true;
-        }
         else
-        return false;
+            return false;
     }
 
     private class ViewPagerAdapter extends FragmentPagerAdapter {
